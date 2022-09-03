@@ -88,7 +88,7 @@ public class InternetBancLoginTest {
         $("div[data-test-id='error-notification']").shouldHave(Condition.text("Пользователь заблокирован")).shouldBe(Condition.visible);
     }
 
-    private static RequestSpecification requestSpec = new RequestSpecBuilder()
+    private static final RequestSpecification requestSpec = new RequestSpecBuilder()
             .setBaseUri("http://localhost")
             .setPort(9999)
             .setAccept(ContentType.JSON)
