@@ -27,9 +27,6 @@ public class InternetBancLoginTest {
         $("span[data-test-id='password'] input").setValue(registeredUser.getPassword());
         $("button[data-test-id='action-login']").click();
         $(".heading_theme_alfa-on-white").shouldHave(Condition.text("Личный кабинет")).shouldBe(Condition.visible);
-        // TODO: добавить логику теста, в рамках которого будет выполнена попытка входа в личный кабинет с учётными
-        //  данными зарегистрированного активного пользователя, для заполнения полей формы используйте
-        //  пользователя registeredUser
     }
 
     @Test
@@ -41,8 +38,6 @@ public class InternetBancLoginTest {
         $("button[data-test-id='action-login']").click();
         $("div[data-test-id='error-notification']").shouldHave(Condition.text("Ошибка!")).shouldBe(Condition.visible);
         $("div[data-test-id='error-notification']").shouldHave(Condition.text("Неверно указан логин или пароль")).shouldBe(Condition.visible);
-        // TODO: добавить логику теста в рамках которого будет выполнена попытка входа в личный кабинет
-        //  незарегистрированного пользователя, для заполнения полей формы используйте пользователя notRegisteredUser
     }
 
     @Test
@@ -54,8 +49,6 @@ public class InternetBancLoginTest {
         $("button[data-test-id='action-login']").click();
         $("div[data-test-id='error-notification']").shouldHave(Condition.text("Ошибка!")).shouldBe(Condition.visible);
         $("div[data-test-id='error-notification']").shouldHave(Condition.text("Пользователь заблокирован")).shouldBe(Condition.visible);
-        // TODO: добавить логику теста в рамках которого будет выполнена попытка входа в личный кабинет,
-        //  заблокированного пользователя, для заполнения полей формы используйте пользователя blockedUser
     }
 
     @Test
@@ -68,9 +61,6 @@ public class InternetBancLoginTest {
         $("button[data-test-id='action-login']").click();
         $("div[data-test-id='error-notification']").shouldHave(Condition.text("Ошибка!")).shouldBe(Condition.visible);
         $("div[data-test-id='error-notification']").shouldHave(Condition.text("Неверно указан логин или пароль")).shouldBe(Condition.visible);
-        // TODO: добавить логику теста в рамках которого будет выполнена попытка входа в личный кабинет с неверным
-        //  логином, для заполнения поля формы "Логин" используйте переменную wrongLogin,
-        //  "Пароль" - пользователя registeredUser
     }
 
     @Test
@@ -83,92 +73,5 @@ public class InternetBancLoginTest {
         $("button[data-test-id='action-login']").click();
         $("div[data-test-id='error-notification']").shouldHave(Condition.text("Ошибка!")).shouldBe(Condition.visible);
         $("div[data-test-id='error-notification']").shouldHave(Condition.text("Неверно указан логин или пароль")).shouldBe(Condition.visible);
-        // TODO: добавить логику теста в рамках которого будет выполнена попытка входа в личный кабинет с неверным
-        //  паролем, для заполнения поля формы "Логин" используйте пользователя registeredUser,
-        //  "Пароль" - переменную wrongPassword
     }
-
-
-
-//    @BeforeAll
-//    static void setUpAll() {
-//
-//        given()
-//                .spec(requestSpec)
-//                .body(new RegistrationDto(login1, password1, "active"))
-//                .when()
-//                .post("/api/system/users")
-//                .then()
-//                .statusCode(200);
-//    }
-//
-//    @Test
-//    void userRegisteredStatusActive() {
-//
-//        open("http://localhost:9999/");
-//        $("span[data-test-id='login'] input").setValue(login1);
-//        $("span[data-test-id='password'] input").setValue(password1);
-//        $("button[data-test-id='action-login']").click();
-//        $(".heading_theme_alfa-on-white").shouldHave(Condition.text("Личный кабинет")).shouldBe(Condition.visible);
-//    }
-//
-//    @Test
-//    void userNotRegistered() {
-//
-//        open("http://localhost:9999/");
-//        $("span[data-test-id='login'] input").setValue(DataGenerator.generateLogin("en"));
-//        $("span[data-test-id='password'] input").setValue(DataGenerator.generatePassword("en"));
-//        $("button[data-test-id='action-login']").click();
-//        $("div[data-test-id='error-notification']").shouldHave(Condition.text("Ошибка!")).shouldBe(Condition.visible);
-//        $("div[data-test-id='error-notification']").shouldHave(Condition.text("Неверно указан логин или пароль")).shouldBe(Condition.visible);
-//    }
-//
-//    @Test
-//    void invalidLogin() {
-//
-//        open("http://localhost:9999/");
-//        $("span[data-test-id='login'] input").setValue(DataGenerator.generateLogin("en"));
-//        $("span[data-test-id='password'] input").setValue(password1);
-//        $("button[data-test-id='action-login']").click();
-//        $("div[data-test-id='error-notification']").shouldHave(Condition.text("Ошибка!")).shouldBe(Condition.visible);
-//        $("div[data-test-id='error-notification']").shouldHave(Condition.text("Неверно указан логин или пароль")).shouldBe(Condition.visible);
-//    }
-//
-//    @Test
-//    void invalidPassword() {
-//
-//        open("http://localhost:9999/");
-//        $("span[data-test-id='login'] input").setValue(login1);
-//        $("span[data-test-id='password'] input").setValue(DataGenerator.generatePassword("en"));
-//        $("button[data-test-id='action-login']").click();
-//        $("div[data-test-id='error-notification']").shouldHave(Condition.text("Ошибка!")).shouldBe(Condition.visible);
-//        $("div[data-test-id='error-notification']").shouldHave(Condition.text("Неверно указан логин или пароль")).shouldBe(Condition.visible);
-//    }
-//
-//    @Test
-//    void userRegisteredStatusBlocked() {
-//
-//        given()
-//                .spec(requestSpec)
-//                .body(new RegistrationDto(login2, password2, "blocked"))
-//                .when()
-//                .post("/api/system/users")
-//                .then()
-//                .statusCode(200);
-//
-//        open("http://localhost:9999/");
-//        $("span[data-test-id='login'] input").setValue(login2);
-//        $("span[data-test-id='password'] input").setValue(password2);
-//        $("button[data-test-id='action-login']").click();
-//        $("div[data-test-id='error-notification']").shouldHave(Condition.text("Ошибка!")).shouldBe(Condition.visible);
-//        $("div[data-test-id='error-notification']").shouldHave(Condition.text("Пользователь заблокирован")).shouldBe(Condition.visible);
-//    }
-//
-//    private static final RequestSpecification requestSpec = new RequestSpecBuilder()
-//            .setBaseUri("http://localhost")
-//            .setPort(9999)
-//            .setAccept(ContentType.JSON)
-//            .setContentType(ContentType.JSON)
-//            .log(LogDetail.ALL)
-//            .build();
 }
